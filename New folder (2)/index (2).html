@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nancy Guthrie Abduction Timeline - Feb 7, 2026</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // Lucide icons as inline SVG components
+    const Play = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+    );
+
+    const Pause = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="6" y="4" width="4" height="16"></rect>
+        <rect x="14" y="4" width="4" height="16"></rect>
+      </svg>
+    );
+
+    const RotateCcw = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="1 4 1 10 7 10"></polyline>
+        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+      </svg>
+    );
+
+    const ChevronLeft = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    );
+
+    const ChevronRight = ({ size = 24 }) => (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    );
+
+    const GuthrieTimeline = () => {
+      const [currentSlide, setCurrentSlide] = useState(0);
+      const [isPlaying, setIsPlaying] = useState(false);
+      const [progress, setProgress] = useState(0);
+      const [visibleItems, setVisibleItems] = useState([]);
+
+      const slides = [
+        {
+          title: "NANCY GUTHRIE ABDUCTION",
+          subtitle: "Comprehensive Case Timeline - Updated Feb 7, 2026",
+          color: "from-red-900 to-red-700",
+          items: [
+            "Victim: Nancy Guthrie, 84 years old",
+            "Mother of NBC 'Today' co-anchor Savannah Guthrie",
+            "Location: 2025 E Cerrada Nopal, Catalina Foothills, Tucson, AZ",
+            "Status: MISSING - Believed Abducted - DAY 7",
+            "Investigation: Pima County Sheriff's Dept + FBI Joint Task Force"
+          ]
+        },
+        {
+          title: "VICTIM PROFILE",
+          subtitle: "Critical Details",
+          color: "from-blue-900 to-blue-700",
+          items: [
+            "Physical: 5'5\", 150 lbs, brown hair, blue eyes",
+            "Lives alone with house staff in affluent Catalina Foothills",
+            "Mobility: SEVERELY LIMITED - 'couldn't walk 50 yards'",
+            "Mental status: 'Sharp as a tack' - NO dementia/confusion",
+            "Health: Heart condition, fragile, in constant pain",
+            "CRITICAL: Requires daily medication - without it 24hrs+ 'could be fatal'",
+            "Medical device: Pacemaker synced to iPhone & Apple Watch",
+            "Education: Notre Dame Academy graduate (1959)"
+          ]
+        },
+        {
+          title: "DAYS BEFORE DISAPPEARANCE",
+          subtitle: "Suspicious Activity Reported",
+          color: "from-orange-900 to-orange-700",
+          items: [
+            "WITNESS: Brett McIntire, neighbor across the street",
+            "Saw UNMARKED WHITE VAN on street days before abduction",
+            "Description: Full-sized white van, NO company markings/printing",
+            "Unusual: Most service vehicles have company identification",
+            "Van parked on street - exact date uncertain",
+            "McIntire reported observation to police during questioning",
+            "Former FBI/CIA analyst: Nancy may have been 'stalked for some time'",
+            "Possible surveillance/reconnaissance phase before abduction"
+          ]
+        },
+        {
+          title: "SATURDAY, JANUARY 31, 2026",
+          subtitle: "Last Known Safe Contact",
+          color: "from-green-900 to-green-700",
+          items: [
+            "5:32 PM: Nancy takes Uber to daughter Annie's home for dinner",
+            "Uber driver located and interviewed by investigators",
+            "Family dinner - ate together, played games",
+            "9:48 PM: Family drops Nancy at home - garage door opens",
+            "9:50 PM: Garage door closes",
+            "Nancy enters home - LAST CONFIRMED SAFE CONTACT",
+            "Believed abduction occurred in middle of night while sleeping"
+          ]
+        },
+        {
+          title: "SUNDAY, FEBRUARY 1, 2026 - EARLY MORNING",
+          subtitle: "Critical Timeline Window - Abduction",
+          color: "from-red-900 to-red-700",
+          items: [
+            "1:47 AM: DOORBELL CAMERA DISCONNECTS (physically removed)",
+            "Camera missing from front of house - not destroyed, TAKEN",
+            "2:12 AM: Security software detects PERSON on camera",
+            "   ⚠️ NO VIDEO AVAILABLE - no subscription service active",
+            "   ⚠️ Camera loops/overwrites without cloud storage",
+            "   ⚠️ Possible person detected (could be person or animal)",
+            "2:28 AM: PACEMAKER APP DISCONNECTS FROM PHONE",
+            "   ➤ Nancy moved out of Bluetooth range (~30 feet)",
+            "   ➤ iPhone & Apple Watch left behind charging in home",
+            "   ➤ PROBABLE TIME OF ABDUCTION BASED ON TECH DATA"
+          ]
+        },
+        {
+          title: "SUNDAY, FEBRUARY 1, 2026 - DISCOVERY",
+          subtitle: "Missing Person Report",
+          color: "from-purple-900 to-purple-700",
+          items: [
+            "Morning: Nancy doesn't show up at church (uncharacteristic)",
+            "Church friend contacts family with concern",
+            "11:56 AM: Family arrives at residence to check on Nancy",
+            "Family searches home and property for approximately 1 hour",
+            "Nancy is MISSING - no sign of her anywhere",
+            "12:03 PM: Family calls 911 - reports Nancy missing",
+            "12:15 PM: Pima County Sheriff's patrol arrives on scene"
+          ]
+        },
+        {
+          title: "SUNDAY, FEBRUARY 1 - INITIAL RESPONSE",
+          subtitle: "Massive Search Mobilization",
+          color: "from-indigo-900 to-indigo-700",
+          items: [
+            "Immediate deployment of search & rescue operations",
+            "Ground teams deployed throughout area",
+            "Helicopter/aerial searches initiated",
+            "Drones with thermal imaging",
+            "K-9 units (including CBP Border Patrol dogs)",
+            "Heat sensors scanning desert terrain",
+            "Search continues through the night",
+            "Family cooperating fully with investigation"
+          ]
+        },
+        {
+          title: "MONDAY, FEBRUARY 2, 2026",
+          subtitle: "Case Escalation to Criminal Investigation",
+          color: "from-red-900 to-red-700",
+          items: [
+            "Morning: Search & rescue operations PAUSED",
+            "HOMICIDE DETECTIVES TAKE OVER INVESTIGATION",
+            "Case officially reclassified as CRIMINAL investigation",
+            "Sheriff Nanos: 'I believe she was abducted, yes'",
+            "'She didn't walk from there. She didn't go willingly'",
+            "'We do in fact have a crime scene, we do in fact have a crime'",
+            "Evidence found at home 'concerning to us'",
+            "Crime scene processing begins",
+            "FBI begins assisting in investigation"
+          ]
+        },
+        {
+          title: "CRIME SCENE EVIDENCE",
+          subtitle: "Physical Evidence Recovered",
+          color: "from-yellow-900 to-yellow-700",
+          items: [
+            "BLOOD FOUND on front porch of residence",
+            "DNA testing confirms: BLOOD MATCHES NANCY GUTHRIE",
+            "Blood pattern: DROPS leading from entryway toward driveway",
+            "Blood described as 'minimal' by Sheriff",
+            "Signs of FORCED ENTRY documented",
+            "Front door area camera MISSING (physically removed, not smashed)",
+            "Multiple cameras on property - some still in place",
+            "Apple Watch found STILL CHARGING inside home",
+            "iPhone left behind in residence",
+            "DNA samples collected from scene",
+            "Fingerprints being analyzed - 'nothing to indicate suspects' yet",
+            "No weapon or other physical evidence publicly disclosed"
+          ]
+        },
+        {
+          title: "TUESDAY, FEBRUARY 3, 2026",
+          subtitle: "Ransom Notes Emerge",
+          color: "from-pink-900 to-pink-700",
+          items: [
+            "Sheriff's office acknowledges reviewing 'possible ransom notes'",
+            "Notes sent to multiple media outlets via email",
+            "Recipients: KOLD (CBS Tucson), KGUN, TMZ",
+            "Bitcoin payment demanded - specific wallet address provided",
+            "TMZ: Note demands 'millions of dollars' in cryptocurrency",
+            "Note begins: Nancy 'is safe, but scared'",
+            "Note states: She 'knows exactly what the demand is'",
+            "Note contains 'sensitive information' only kidnapper would know",
+            "Note references Apple Watch (publicly known detail)",
+            "Note references floodlight (publicly known detail)",
+            "Note contains details about what Nancy was wearing",
+            "Authenticity being investigated - details held back",
+            "Nanos: 'Following all leads' - won't confirm/deny specifics"
+          ]
+        },
+        {
+          title: "WEDNESDAY, FEBRUARY 4, 2026",
+          subtitle: "Family Emotional Plea #1",
+          color: "from-teal-900 to-teal-700",
+          items: [
+            "Savannah Guthrie posts emotional video to Instagram",
+            "Flanked by sister Annie and brother Camron",
+            "Direct address to mother's potential abductors:",
+            "   'We are ready to talk'",
+            "   'We live in a world where voices/images are easily manipulated'",
+            "   'We need to know WITHOUT A DOUBT that she is alive'",
+            "   'We need PROOF that you have her'",
+            "   'We want to hear from you and we are ready to listen'",
+            "Addressed to Nancy: 'Everyone is looking for you, Mommy, everywhere'",
+            "'We will not rest until we are together again'",
+            "Annie: 'Mama, if you're listening, we need you to come home'",
+            "Camron: 'We love you, Mom, stay strong, come home'"
+          ]
+        },
+        {
+          title: "WEDNESDAY, FEB 4 - DEVELOPMENTS",
+          subtitle: "Political & Investigative Updates",
+          color: "from-cyan-900 to-cyan-700",
+          items: [
+            "DERRICK CALLELLA sends FAKE ransom texts to family",
+            "Text to Annie Guthrie & husband Tommaso Cioni:",
+            "   'Did you get the bitcoin were [sic] waiting on our end'",
+            "Sent shortly AFTER family video plea posted",
+            "Used VOIP phone number (760 area code)",
+            "Made 9-second phone call to family member",
+            "Callella monitoring TV coverage, following case online",
+            "President Trump contacts Savannah Guthrie by phone",
+            "Trump: 'Directing ALL Federal Law Enforcement' to assist",
+            "Trump: 'We are deploying all resources'",
+            "Savannah withdraws from hosting Winter Olympics coverage"
+          ]
+        },
+        {
+          title: "THURSDAY, FEBRUARY 5, 2026 - MORNING",
+          subtitle: "Major Press Conference",
+          color: "from-lime-900 to-lime-700",
+          items: [
+            "Sheriff Nanos & FBI Special Agent Heith Janke brief media",
+            "FBI ANNOUNCES $50,000 REWARD",
+            "Reward for: 'Information leading to recovery of Nancy AND/OR",
+            "   arrest & conviction of anyone involved'",
+            "FBI confirms JOINT INVESTIGATION with Sheriff's Dept",
+            "DETAILED TIMELINE RELEASED (Saturday 5:32 PM through Sunday)",
+            "Sheriff confirms: 'Right now we believe Nancy is STILL OUT THERE'",
+            "'We want her home'",
+            "Blood on porch confirmed as Nancy's via DNA",
+            "NO SUSPECT OR PERSON OF INTEREST identified",
+            "'We're not there yet' on suspects"
+          ]
+        },
+        {
+          title: "THURSDAY, FEB 5 - RANSOM DETAILS",
+          subtitle: "Two Deadlines Revealed",
+          color: "from-emerald-900 to-emerald-700",
+          items: [
+            "FBI confirms taking ransom notes SERIOUSLY",
+            "FIRST DEADLINE: 5:00 PM Thursday, February 5",
+            "SECOND DEADLINE: Monday, February 9",
+            "Payment demanded in Bitcoin cryptocurrency",
+            "Amount NOT publicly disclosed",
+            "FBI won't detail consequences if demands not met",
+            "Multiple notes sent - authenticity still being verified",
+            "Advanced digital forensics & deepfake detection deployed",
+            "Metadata analysis ongoing",
+            "Notes contain some publicly-known details (not hold-back evidence)"
+          ]
+        },
+        {
+          title: "THURSDAY, FEB 5 - ARREST",
+          subtitle: "Fake Ransom Suspect Charged",
+          color: "from-red-800 to-red-600",
+          items: [
+            "DERRICK CALLELLA, 42, arrested in Hawthorne/Los Angeles, CA",
+            "Hometown: Torrance, California",
+            "Federal charges filed in U.S. District Court, Arizona:",
+            "   COUNT 1: Transmitting interstate demand for ransom",
+            "   COUNT 2: Using telecom device to abuse/threaten/harass",
+            "Callella ADMITS to sending messages during FBI interview",
+            "Quote: 'I was trying to see if the family would respond'",
+            "Used email: derrickcallella@gmail.com",
+            "Messages NOT linked to original Feb 2 ransom to media",
+            "FBI: Original ransom note STILL UNDER INVESTIGATION",
+            "Callella released on bond after court appearance",
+            "FBI warning to imposters: 'We will investigate and hold accountable'"
+          ]
+        },
+        {
+          title: "THURSDAY, FEB 5 - EVENING",
+          subtitle: "Family Plea #2 After Deadline",
+          color: "from-violet-900 to-violet-700",
+          items: [
+            "Video posted ~5:00 PM - as first deadline passes",
+            "Camron Guthrie speaks for family:",
+            "'Whoever is out there holding our mother, we want to hear from you'",
+            "'We haven't heard anything DIRECTLY'",
+            "'We need you to REACH OUT'",
+            "'We need a way to COMMUNICATE with you to move forward'",
+            "'But FIRST we have to know that you have our mom'",
+            "'We want to talk to you, and we are WAITING FOR CONTACT'",
+            "Family has received NO DIRECT COMMUNICATION from abductor(s)",
+            "No proof of life provided",
+            "No confirmed legitimate contact"
+          ]
+        },
+        {
+          title: "FRIDAY, FEBRUARY 6, 2026 - DAY 6",
+          subtitle: "New Message & Law Enforcement Returns to Home",
+          color: "from-fuchsia-900 to-fuchsia-700",
+          items: [
+            "Sheriff's Dept: 'Aware of NEW MESSAGE regarding Nancy Guthrie'",
+            "Email sent to KOLD TV station earlier in day",
+            "FBI investigating if connected to original ransom demand",
+            "'Actively inspecting information for AUTHENTICITY'",
+            "KOLD anchor: New note appears to be RESPONSE to family videos",
+            "Note does NOT appear to be typical ransom (no deadline mentioned)",
+            "Note contains 'sensitive information'",
+            "Verification delayed due to technical factors",
+            "Circle K gas station on Oracle Road: Law enforcement requested",
+            "   surveillance footage - 'tip regarding vehicle of interest'"
+          ]
+        },
+        {
+          title: "FRIDAY, FEB 6 - SCENE REPROCESSING",
+          subtitle: "Return to Crime Scene",
+          color: "from-rose-900 to-rose-700",
+          items: [
+            "~4:00 PM: FBI and Sheriff's Dept return to Nancy's home",
+            "'Conducting follow-up at home and surrounding areas'",
+            "Road in front of Guthrie home RESTRICTED by authorities",
+            "BLUE SUBARU SUV TOWED from Nancy's residence late evening",
+            "NBC News confirms: Vehicle BELONGS TO NANCY (her car)",
+            "Previously seen parked in her garage",
+            "Routine evidence collection - not suspect vehicle",
+            "Investigators examining home for THIRD TIME since Sunday",
+            "Aerial drone footage shows investigators swarming property",
+            "Agents seen SEARCHING ROOF of residence",
+            "Neighbor observation about roof prompted search",
+            "Searching neighborhood, checking with residents",
+            "FBI: 'Looking for details only kidnapper would know'",
+            "Labs still analyzing fingerprints, DNA, camera images"
+          ]
+        },
+        {
+          title: "FRIDAY, FEB 6 - PRESIDENTIAL STATEMENT",
+          subtitle: "Trump Suggests Imminent Break in Case",
+          color: "from-amber-900 to-amber-700",
+          items: [
+            "President Trump aboard Air Force One en route to Florida:",
+            "'Investigation going VERY WELL'",
+            "'We have SOME THINGS that will maybe come out reasonably soon'",
+            "'From DOJ or FBI, or whoever, that could be DEFINITIVE'",
+            "'A lot has taken place in the LAST COUPLE OF HOURS'",
+            "'A lot of things have happened with regard to that horrible",
+            "   situation in the last couple of hours'",
+            "'We have some CLUES that are VERY STRONG'",
+            "When asked if suspect identified, Trump replied: 'Yeah'",
+            "Suggests possible imminent break in case",
+            "White House: Trump watched Thursday press conference",
+            "Federal resources fully deployed per presidential directive"
+          ]
+        },
+        {
+          title: "SATURDAY, FEBRUARY 7, 2026 - DAY 7",
+          subtitle: "One Week Missing - Search Continues",
+          color: "from-red-900 to-black",
+          items: [
+            "ONE WEEK since Nancy Guthrie disappeared",
+            "168 hours (7 days) missing",
+            "Medication timeline: CRITICAL - 7 days without essential meds",
+            "Sheriff Nanos: Unknown if Nancy's medication was still at home",
+            "Investigation status: ACTIVE - Joint FBI/Sheriff task force",
+            "Suspects identified: STILL ZERO (publicly)",
+            "Persons of interest: NONE (publicly)",
+            "Proof of life: STILL NOT RECEIVED",
+            "Direct communication from abductor(s): NONE CONFIRMED",
+            "Second ransom deadline: Monday, February 9 (2 days away)",
+            "Authorities examining new message sent to KOLD",
+            "FBI & Sheriff continuing to urge public to submit tips",
+            "Reward: $50,000 FBI reward remains active"
+          ]
+        },
+        {
+          title: "SATURDAY, FEB 7 - SCENE STATUS",
+          subtitle: "FBI Billboard Campaign Launched",
+          color: "from-indigo-900 to-indigo-700",
+          items: [
+            "Saturday morning: No law enforcement activity at Nancy's home",
+            "Security guard present watching residence",
+            "Neighbors walking dogs, life returning to normal appearance",
+            "Press still assembled outside awaiting updates",
+            "FBI DIGITAL BILLBOARD CAMPAIGN announced Thursday:",
+            "Billboards with Nancy's photo & FBI tipline going up in:",
+            "   • Texas: El Paso, Houston, San Antonio, Dallas",
+            "   • New Mexico: Albuquerque",
+            "   • California: San Diego, Los Angeles",
+            "FBI Billboard Program: Created 2007, 7,300 billboards in 46 states",
+            "Program success: Led to 57 fugitive captures directly",
+            "Assisted with numerous other investigations",
+            "Sheriff Nanos: 'I believe Nancy is still alive'",
+            "'What I believe is Nancy was removed from her home against her will'"
+          ]
+        },
+        {
+          title: "INVESTIGATIVE CHALLENGES",
+          subtitle: "Obstacles Facing Law Enforcement",
+          color: "from-stone-900 to-stone-700",
+          items: [
+            "TERRAIN: Difficult desert environment - Sonoran Desert terrain",
+            "CAMERA FOOTAGE: Critical gap - no subscription = no saved video",
+            "DOORBELL CAM: Physically removed from property (taken by abductor)",
+            "SPARSE EVIDENCE: Limited physical evidence at scene",
+            "NO WITNESSES: No one saw abduction occur",
+            "DARK SKY ORDINANCE: Catalina Foothills limits outdoor lighting",
+            "DIGITAL DECEPTION: Must verify authenticity of all communications",
+            "AI DEEPFAKES: Risk of manipulated audio/video 'proof of life'",
+            "FAKE RANSOMS: Opportunists exploiting case (Callella example)",
+            "NO SUSPECTS NAMED: Zero persons of interest publicly after 7 days",
+            "FBI LEAD ROLE: Former NYPD analysis - means 'she's dead, or",
+            "   they crossed state lines — or both'",
+            "MEDICAL URGENCY: Time-sensitive - 7 days without medication",
+            "MEDICATION STATUS: Unknown if pills left at home or taken",
+            "TECHNOLOGY LIMITS: 'I wish tech was as easy as we believe' - Sheriff"
+          ]
+        },
+        {
+          title: "TECHNOLOGICAL EVIDENCE",
+          subtitle: "Digital Forensics",
+          color: "from-sky-900 to-sky-700",
+          items: [
+            "PACEMAKER DATA: Disconnect at 2:28 AM = abduction timeframe",
+            "Bluetooth range ~30 feet - shows when Nancy moved from phone",
+            "CAMERA SYSTEMS: Multiple cameras on property",
+            "Motion detection at 2:12 AM - but NO RECORDING",
+            "Google/Nest providing assistance to law enforcement",
+            "Tech companies: 'This is what we have, we can't get anymore'",
+            "CELLPHONE: Nancy's phone recovered from scene",
+            "Being analyzed by investigators",
+            "DIGITAL FORENSICS: Metadata analysis of ransom emails",
+            "Deepfake detection tools deployed",
+            "Tracing VOIP numbers, Bitcoin wallets",
+            "Tracking email IP addresses and routing",
+            "Examining vehicle surveillance footage from Circle K"
+          ]
+        },
+        {
+          title: "COMMUNITY & NEIGHBORHOOD",
+          subtitle: "Catalina Foothills Context",
+          color: "from-neutral-900 to-neutral-700",
+          items: [
+            "LOCATION: Unincorporated Pima County, north of Tucson",
+            "Affluent, quiet residential area",
+            "Dark sky ordinance: Outdoor lighting directed downward/limited",
+            "Typical desert wildlife: Coyotes, bobcats, javelina",
+            "No significant recent crime in area per residents",
+            "Residents now installing/upgrading security systems",
+            "Reviewing personal camera footage at deputies' request",
+            "Allowing property searches by law enforcement",
+            "Catalina Foothills Association president thanks residents",
+            "PCRIT team activated (Pima Regional Critical Incident Team)",
+            "Border Patrol Search Trauma & Rescue team assisting",
+            "Neighbors: 'Everybody's frustrated - no answers'",
+            "Community in shock over elderly woman's abduction"
+          ]
+        },
+        {
+          title: "FAMILY STATEMENTS & MEDIA",
+          subtitle: "Public Communications",
+          color: "from-zinc-900 to-zinc-700",
+          items: [
+            "Three children: Savannah (youngest), Annie, Charles Camron",
+            "Husband Charles died 1988 - Nancy widowed 38 years",
+            "Savannah's initial statement Feb 2:",
+            "   'Our focus remains on safe return of our dear mom'",
+            "Instagram: 'Raise your prayers with us'",
+            "Family describes Nancy: 'Woman of deep conviction'",
+            "   'Good and faithful servant' 'Kind, faithful, loyal'",
+            "   'Fiercely loving woman of goodness and light'",
+            "   'Funny, spunky and clever'",
+            "Savannah withdrew from Winter Olympics hosting duties",
+            "NBC enhanced security at Today show studio (precautionary)",
+            "Public support: Sheryl Crow, Khloe Kardashian, Hoda Kotb,",
+            "   Tina Knowles, Jenna Bush Hager, Hallie Jackson",
+            "Arizona Senator Mark Kelly: 'Confident they'll bring her home'"
+          ]
+        },
+        {
+          title: "INVESTIGATIVE PROFILE QUESTIONS",
+          subtitle: "Key Analytical Considerations",
+          color: "from-slate-900 to-slate-700",
+          items: [
+            "White van surveillance: Days of reconnaissance before abduction?",
+            "How did perpetrator know about pacemaker/medical devices?",
+            "Was medical alert system disabled? Counter-forensics knowledge?",
+            "Level of technical sophistication = level of premeditation?",
+            "Inside knowledge of victim's routine & vulnerabilities?",
+            "Mobility limitations: Victim of opportunity OR targeted?",
+            "Knowledge of dark sky ordinance/lighting restrictions?",
+            "Familiarity with camera subscription gap?",
+            "Timing: Why middle of night vs. daytime when alone?",
+            "Targeting due to Savannah's celebrity? Or random?",
+            "Professional vs. opportunistic abduction?",
+            "Solo offender or team operation?",
+            "Local knowledge vs. outsider?",
+            "Possible stalking period before strike?"
+          ]
+        },
+        {
+          title: "CURRENT STATUS - FEBRUARY 7, 2026",
+          subtitle: "7 Days Missing - ONE WEEK",
+          color: "from-red-900 to-black",
+          items: [
+            "NANCY GUTHRIE: STILL MISSING",
+            "Time elapsed: 168+ hours (7 DAYS / 1 WEEK)",
+            "Medication timeline: CRITICAL - life-threatening situation",
+            "Unknown if medication was left at home or taken",
+            "Investigation status: ACTIVE - Joint FBI/Sheriff task force",
+            "FBI now leading investigation (federal involvement expanded)",
+            "Suspects identified: PUBLICLY NONE",
+            "Trump suggests suspect may be identified (said 'Yeah' when asked)",
+            "Persons of interest: NONE PUBLICLY NAMED",
+            "Proof of life: NOT RECEIVED",
+            "Direct communication from abductor(s): NONE CONFIRMED",
+            "Ransom deadlines: First passed (Feb 5), second Mon Feb 9 (48hrs)",
+            "Reward: $50,000 FBI reward active",
+            "FBI Billboard Campaign: Launching in 7 cities across Southwest",
+            "New message under investigation for authenticity",
+            "Nancy's own blue Subaru SUV seized as evidence Friday",
+            "Family: In Tucson, waiting for contact",
+            "Sheriff Nanos: 'I believe Nancy is still alive'",
+            "Trump: 'Definitive' info may come soon from DOJ/FBI",
+            "TIPLINE: 1-800-CALL-FBI or tips.fbi.gov",
+            "Pima County Sheriff: (520) 351-4900"
+          ]
+        }
+      ];
+
+      useEffect(() => {
+        let timer;
+        let itemTimer;
+        
+        if (isPlaying) {
+          if (visibleItems.length < slides[currentSlide].items.length) {
+            itemTimer = setTimeout(() => {
+              setVisibleItems(prev => [...prev, slides[currentSlide].items[prev.length]]);
+            }, 800);
+          } else {
+            timer = setInterval(() => {
+              setProgress((prev) => {
+                if (prev >= 100) {
+                  if (currentSlide < slides.length - 1) {
+                    setCurrentSlide((curr) => curr + 1);
+                    setVisibleItems([]);
+                    return 0;
+                  } else {
+                    setIsPlaying(false);
+                    return 100;
+                  }
+                }
+                return prev + 1;
+              });
+            }, 100);
+          }
+        }
+        
+        return () => {
+          clearInterval(timer);
+          clearTimeout(itemTimer);
+        };
+      }, [isPlaying, currentSlide, progress, slides.length, visibleItems.length]);
+
+      useEffect(() => {
+        setVisibleItems([]);
+        setProgress(0);
+      }, [currentSlide]);
+
+      const handlePlayPause = () => {
+        if (!isPlaying && visibleItems.length === 0) {
+          setVisibleItems([slides[currentSlide].items[0]]);
+        }
+        setIsPlaying(!isPlaying);
+      };
+
+      const handleReset = () => {
+        setCurrentSlide(0);
+        setProgress(0);
+        setVisibleItems([]);
+        setIsPlaying(false);
+      };
+
+      const handleNext = () => {
+        if (currentSlide < slides.length - 1) {
+          setCurrentSlide(currentSlide + 1);
+          setVisibleItems([]);
+          setProgress(0);
+        }
+      };
+
+      const handlePrev = () => {
+        if (currentSlide > 0) {
+          setCurrentSlide(currentSlide - 1);
+          setVisibleItems([]);
+          setProgress(0);
+        }
+      };
+
+      const currentSlideData = slides[currentSlide];
+
+      return (
+        <div className="min-h-screen bg-black flex items-center justify-center p-4">
+          <div className="w-full max-w-6xl">
+            <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-2xl">
+              <div className={`relative bg-gradient-to-br ${currentSlideData.color} p-12 min-h-[600px] flex flex-col justify-center`}>
+                <div className="absolute top-4 right-4 bg-black bg-opacity-50 px-4 py-2 rounded">
+                  <span className="text-white font-mono text-sm">
+                    {currentSlide + 1} / {slides.length}
+                  </span>
+                </div>
+
+                <div className="mb-8">
+                  <h1 className="text-5xl font-bold text-white mb-2 tracking-tight">
+                    {currentSlideData.title}
+                  </h1>
+                  <h2 className="text-2xl text-gray-200 font-light">
+                    {currentSlideData.subtitle}
+                  </h2>
+                </div>
+
+                <div className="space-y-3">
+                  {currentSlideData.items.map((item, index) => {
+                    const isVisible = visibleItems.includes(item);
+                    const indent = item.startsWith('   ') ? 'ml-12' : item.startsWith(' ') ? 'ml-6' : '';
+                    
+                    return (
+                      <div
+                        key={index}
+                        className={`flex items-start transition-all duration-500 ${
+                          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+                        } ${indent}`}
+                      >
+                        <span className="text-yellow-400 mr-4 mt-1 flex-shrink-0 text-xl">
+                          {item.startsWith('   ') ? '➤' : item.startsWith(' ') ? '•' : '▸'}
+                        </span>
+                        <p className="text-white text-xl leading-relaxed font-medium">
+                          {item.trim()}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-800">
+                <div
+                  className="h-full bg-red-600 transition-all duration-100"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 bg-gray-900 rounded-lg p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2">
+                  <button
+                    onClick={handlePrev}
+                    disabled={currentSlide === 0}
+                    className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    disabled={currentSlide === slides.length - 1}
+                    className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </div>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={handlePlayPause}
+                    className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+                  </button>
+                  <button
+                    onClick={handleReset}
+                    className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                  >
+                    <RotateCcw size={24} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-4 flex gap-1 overflow-x-auto">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      setVisibleItems([]);
+                      setProgress(0);
+                      setIsPlaying(false);
+                    }}
+                    className={`flex-shrink-0 h-2 rounded-full transition-all ${
+                      index === currentSlide
+                        ? 'bg-red-600 w-12'
+                        : index < currentSlide
+                        ? 'bg-green-600 w-8'
+                        : 'bg-gray-700 w-8'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 bg-red-900 bg-opacity-20 border border-red-600 rounded-lg p-4">
+              <p className="text-red-400 text-center font-bold text-lg">
+                🚨 DAY 7 - ONE WEEK MISSING - NANCY GUTHRIE STILL MISSING 🚨
+              </p>
+              <p className="text-white text-center mt-2">
+                Tips: 1-800-CALL-FBI • Pima County Sheriff: (520) 351-4900 • FBI Reward: $50,000
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<GuthrieTimeline />, document.getElementById('root'));
+  </script>
+</body>
+</html>
